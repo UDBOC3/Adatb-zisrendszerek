@@ -1,0 +1,29 @@
+select konyv.cim, konyvtari_konyv.leltari_szam
+from konyv cross join konyvtari_konyv
+where konyv.konyv_azon=konyvtari_konyv.konyv_azon
+order by konyv.cim;
+
+select count(tema), tema
+from konyv
+group by tema;
+
+select kiado
+from konyv
+group by kiado
+having count(kiado)>2;
+
+select count(tema), tema, kiado
+from konyv
+where tema is not NULL
+group by kiado, tema
+order by kiado, tema;
+
+select orszag_azon, bronz
+from o_erem_tabla
+where bronz between 1 and 10
+order by bronz;
+
+select orszag_azon
+from o_erem_tabla
+where ezust>2 or bronz>5
+order by bronz;
