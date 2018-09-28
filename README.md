@@ -1,1 +1,1 @@
-# Adatb-zisrendszerek
+Adatbazisrendszerek
