@@ -41,8 +41,8 @@ from o_eredmenyek
 group by versenyszam_azon
 having max(helyezes)<9;
 
-select o_orszagok.azon, count(o_versenyzok.azon)
-from o_orszagok cross join o_versenyzok
-where o_orszagok.azon=o_versenyzok.orszag_azon
-group by o_orszag.azon
-having count(o_versenyzok.azon)>30;
+#select o_orszagok.azon, count(o_versenyzok.azon)
+#from o_orszagok cross join o_versenyzok
+#where o_orszagok.azon=o_versenyzok.orszag_azon
+#group by o_orszag.azon
+#having count(o_versenyzok.azon)>30;
