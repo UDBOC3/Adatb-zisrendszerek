@@ -27,3 +27,16 @@ select orszag_azon
 from o_erem_tabla
 where ezust>2 or bronz>5
 order by bronz;
+
+select foldresz, count(orszag), max(terulet), min(terulet), sum(lakossag), avg(lakossag)
+from o_orszagok
+group by foldresz;
+
+select versenyszam_azon, max(helyezes), min(helyezes)
+from o_eredmenyek
+group by versenyszam_azon;
+
+select versenyszam_azon, max(helyezes), min(helyezes)
+from o_eredmenyek
+group by versenyszam_azon
+having max(helyezes)<9;
