@@ -1,0 +1,62 @@
+select ((1000*1000)/35)*2
+FROM DUAL;
+
+select 'Adatbázisrendszerek'
+FROM DUAL;
+
+select to_date('2018 április 13', 'YYYY MONTH DD')
+from DUAL;
+
+select leltari_szam, nvl(kesedelmi_dij,0)
+from kolcsonzes;
+
+select leltari_szam, nvl(to_char(visszahozas_datum, 'YYYY'),'ismeretlen')
+from kolcsonzes;
+
+select visszahozas_datum + interval '4' month
+from kolcsonzes;
+
+SELECT EXTRACT(DAY FROM SYSDATE)
+FROM DUAL;
+
+select to_char(sysdate + 9, 'DAY')
+from dual;
+
+select sysdate-to_date('1998.04.22', 'YYYY.MM.DD')
+from dual;
+
+select months_between (sysdate, to_date('1993.02.12', 'YYYY.MM.DD'))/12
+from dual;
+
+select *
+from tag
+order by beiratkozasi_datum;
+
+select vezeteknev, keresztnev
+from tag
+where tagdij>3000 and nem='n';
+
+select besorolas, count(olvasojegyszam)
+from tag
+group by besorolas
+order by besorolas;
+
+select  szerzo.vezeteknev, szerzo.keresztnev, konyvszerzo.honorarium
+from konyvszerzo cross join szerzo
+where konyvszerzo.szerzo_azon=szerzo.szerzo_azon;
+
+select  szerzo.vezeteknev, konyvszerzo.honorarium
+from konyvszerzo cross join szerzo
+where konyvszerzo.szerzo_azon=szerzo.szerzo_azon and konyvszerzo.honorarium>50000
+order by konyvszerzo.honorarium desc;
+
+select vezeteknev, keresztnev, sysdate-to_date(szuletesi_datum, 'YYYY.MM.DD')
+from szerzo
+where vezeteknev='Frei';
+
+select szerzo_azon, sum(honorarium), max(honorarium), min(honorarium), avg(honorarium)
+from konyvszerzo
+group by szerzo_azon;
+
+select (574678*254953)/2
+from DUAL;
