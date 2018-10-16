@@ -1,0 +1,36 @@
+select cim, kiado, tema
+from konyv
+where (ar>10000 and kiado='Európa Könyv kiadó Kft') or oldalszam between 400 and 600
+order by cim;
+
+select *
+from konyv
+where tema='természettudomány' or tema is NULL;
+
+select *
+from konyv
+where (cim like 'Z%' or cim like 'A%') and cim like '__b%';
+
+select kiado
+from konyv
+where count(kiado)>=4;
+
+select count(vezeteknev)
+from tag
+where vezeteknev='Ella';
+
+select nvl(szuletesi_datum, '1900 január 1')
+from szerzo;
+
+select konyvtari_konyv.leltari_szam, nvl(to_char(kolcsonzes.visszahozasi_datum, 'YYYY'), 'ismeretlen')
+from kolcsonzes cross join konyvtari_konyv
+where kolcsonzes.leltari_szam=konyvtari_konyv.leltari_szam;
+
+select konyvtari_konyv.leltari_szam, kolcsonzes.visszahozasi_datum + interval '2' year
+from kolcsonzes cross join konyvtari_konyv
+where kolcsonzes.leltari_szam=konyvtari_konyv.leltari_szam;
+
+select count(besorolas), decode(besorolas, 'diák', 'tanuló')
+from tag
+group by besorolas
+having besorolas='diák';
